@@ -23,4 +23,8 @@ class DemoApplicationTests {
         System.out.println("数据批量入库");
         userService.mainMethod();
     }
+    @Test
+    public void test2() throws IOException, BiffException {
+        System.out.println("测试3");
+    }
 }
