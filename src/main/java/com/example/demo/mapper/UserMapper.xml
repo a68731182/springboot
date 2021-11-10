@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.UserMapper">
+
+    <resultMap id="map" type="java.util.Map" >
+        <result column="ID" property="ID" jdbcType="BIGINT" />
+        <result column="NAME" property="name" jdbcType="VARCHAR" />
+        <result column="SEX" property="sex" jdbcType="VARCHAR" />
+        <result column="AGE" property="age" jdbcType="VARCHAR" />
+        <result column="LENGTH" property="length" jdbcType="VARCHAR" />
+        <result column="WEIGHT" property="weight" jdbcType="VARCHAR" />
+        <result column="BMI" property="bmi" jdbcType="VARCHAR" />
+    </resultMap>
+
+
+    <select id="query" parameterType="java.lang.Long"
+            resultMap="map">
+        SELECT ID,NAME,SEX,AGE,LENGTH,WEIGHT
+        FROM USER
+    </select>
+
+    <insert id="batchInsert" parameterType="java.util.List" useGeneratedKeys="true" keyProperty="id">
+        insert into USER
+        (NAME,SEX,AGE,LENGTH,WEIGHT,BMI)
+        values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.name,jdbcType=VARCHAR},
+            #{item.sex,jdbcType=VARCHAR},
+            #{item.age,jdbcType=VARCHAR},
+            #{item.length,jdbcType=VARCHAR},
+            #{item.weight,jdbcType=VARCHAR},
+            #{item.bmi,jdbcType=VARCHAR})
+        </foreach>
+    </insert>
+</mapper>

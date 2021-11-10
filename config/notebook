@@ -1,0 +1,7 @@
+springboot+mybatis项目
+1.SpringBoot相关依赖jar dependency
+2.跨域问题解决
+3.相关注解   @Configuration   //配置spring容器 应用上下文
+           @MapperScan("path")  //写在启动类上 该注解用于将相对应的mapper下的接口生成实体类
+           @RequestMapping(value = "/path",method = RequestMethod.GET)  发送请求 路径path:  http://localhost:8085/path/path
+           @Autowired    //可以对类成员变量、方法及构造函数进行标注，完成自动装配的工作   在javabean容器中取值完成自动装配
